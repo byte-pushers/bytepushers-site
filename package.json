@@ -1,0 +1,21 @@
+{
+  "name": "website-bytepushers",
+  "version": "1.0.0",
+  "description": "Byte Pusher Inc. website.",
+  "main": "index.js",
+  "author": "Jared Ramirez <jared.ramirez@bytepushers.software> (http://bytepushers.software)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.3",
+    "bootstrap": "^3.3.6",
+    "bower": "^1.7.7",
+    "bytepushers-js-core": "0.0.26",
+    "bytepushers-js-messaging": "0.0.2",
+    "bytepushers-js-restful": "0.0.5",
+    "requirejs": "^2.2.0"
+  }
+}

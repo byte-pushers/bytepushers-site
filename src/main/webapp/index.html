@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BytePushers</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-default navbar-fixed-top" data-scroll>
+                <div class="col-md-3">
+                    <div class="nav navbar-nav">
+                        <a ui-sref="home">byte-pushers</a>
+                    </div>
+                </div>
+                <div class="col-md-1 col-md-offset-4">
+                    <div class="nav navbar-nav">
+                        <a ui-sref="services">services</a>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="nav navbar-nav">
+                        <a ui-sref="works">works</a>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="nav navbar-nav">
+                        <a ui-sref="about">about</a>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="nav navbar-nav">
+                        <a ui-sref="contact">contact</a>
+                    </div>
+                </div>
+
+                <!--todo: finish arranging the navbar then move on to creating the footer.-->
+
+                <!--<div class="col-md-8">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ui-sref="services">services</a></li>
+                        <li><a ui-sref="works">works</a></li>
+                        <li><a ui-sref="about">about</a></li>
+                        <li><a ui-sref="contact">contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <div ui-view></div>
+    </div>
+
+    <script src="assets/lib/requirejs/require.js" data-main="app/main"></script>
+</body>
+</html>
