@@ -14,7 +14,6 @@ define(['./../directiveModule'], function(directives) {
                     scope.boolChangeClass = false;
                     element.removeClass('navbarModified');
                 }
-                console.log(element);
 
                 scope.scrollPosition = this.pageYOffset;
                 scope.$apply();
