@@ -3,19 +3,16 @@
     padding-top: 2em;
     font-size: 2em;
     font-variant: small-caps;
-    -webkit-transition: padding-top 1s;
     transition: padding-top 1s;
-}
-nav.navbar{
-    transition: all 0.4s ease;
 }
 
 .navbarModified {
     background-color: white;
-    opacity: 0.8;
+    opacity: 0.9;
     font-size: 1.75em;
-    padding-top: .25em;
-    padding-bottom: .15em;
+    padding-top: .45em;
+    padding-bottom: .45em;
+    box-shadow: 0em .05em .05em .05em #ccc;
 }
 
 .navigation a {
@@ -28,20 +25,19 @@ nav.navbar{
     font-family: 'Open Sans Light', sans-serif;
 }
 
-/*tmp*/
 
-.footer {
+.navbar-default.footer {
+    background-color: #191919;
+    padding: 1em 0em 10em;
     font-size: 1.25em;
+    font-variant: small-caps;
     font-family: 'Open Sans Light', sans-serif;
     text-align: center;
-    padding-top:2em;
-    padding-bottom:2em;
-    background-color: #191919;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
 .footer span {
-    font-size: 1.25em;
+    font-size: 1.5em;
     font-variant: small-caps;
 }
 

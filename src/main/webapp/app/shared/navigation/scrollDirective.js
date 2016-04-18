@@ -5,7 +5,6 @@ define(['./../directiveModule'], function(directives) {
                 if (!scope.scrollPosition) {
                     scope.scrollPosition = 0
                 }
-
                 /*todo: right now, navbar shifts up an absolute value. modified to fit dynamically based on screen size*/
                 if (this.pageYOffset > 600) {
                     scope.boolChangeClass = true;
