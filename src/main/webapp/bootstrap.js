@@ -2,7 +2,7 @@ define([
     'require',
     'angular',
     'app',
-    'routes'
+    'states'
 ], function (require, angular) {
     require(['domReady!'], function (document) {
         angular.bootstrap(document, ['app']);

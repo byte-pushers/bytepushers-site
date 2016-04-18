@@ -6,8 +6,8 @@ define([
     'components/about/aboutController',
     'components/contact/contactController',
     /*directives*/
-    'shared/navigation/scrollDirective',
-    'shared/navigation/scrollTopDirective',
-    'shared/view/backgroundImageDirective'
+    'shared/directives/navigation/scrollDirective',
+    'shared/directives/navigation/scrollTopDirective',
+    'shared/directives/view/backgroundImageDirective'
     
 ], function () {});
