@@ -1,0 +1,63 @@
+.navbar-default {
+    background-color: transparent;
+    padding-top: 2em;
+    font-size: 2em;
+    font-variant: small-caps;
+    transition: padding-top 1s;
+}
+
+.navbarModified {
+    background-color: white;
+    opacity: 0.9;
+    font-size: 1.75em;
+    padding-top: .45em;
+    padding-bottom: .45em;
+    box-shadow: 0em .05em .05em .05em #ccc;
+}
+
+.navigation a {
+    color: whitesmoke;
+    font-family: 'Open Sans Light', sans-serif;
+}
+
+.navigation.navbarModified a {
+    color:black;
+    font-family: 'Open Sans Light', sans-serif;
+}
+
+
+.navbar-default.footer {
+    background-color: #191919;
+    padding: 1em 0em 10em;
+    font-size: 1.25em;
+    font-variant: small-caps;
+    font-family: 'Open Sans Light', sans-serif;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.footer span {
+    font-size: 1.5em;
+    font-variant: small-caps;
+}
+
+.footer p {
+    font-size: .75em;
+}
+
+.footer a {
+    font-size: 1em;
+    font-variant: small-caps;
+    color:whitesmoke;
+}
+
+.footer a:hover, .footer a:focus {
+    font-size: 1em;
+    font-variant: small-caps;
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+.footer li {
+    list-style-type: none;
+}

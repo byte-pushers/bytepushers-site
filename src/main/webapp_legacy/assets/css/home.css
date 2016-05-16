@@ -1,0 +1,21 @@
+.quote {
+    padding: 2em 0em 3em;
+    background-color: whitesmoke;
+    font-family: "American Typewriter";
+    font-style: italic;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.title {
+    padding: 1em 0em 2em;
+    font-family: "American Typewriter";
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.works span {
+    font-family: "Avenir Next";
+    font-size: 2.5em;
+    text-align: center;
+}

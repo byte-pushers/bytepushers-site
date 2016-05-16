@@ -1,4 +1,4 @@
-define(['app'], function(app) {
+define('states', ['app'], function(app) {
     'use strict';
     return app.config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/home");
