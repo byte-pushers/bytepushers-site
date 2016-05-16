@@ -1,28 +1,33 @@
-define(['bytepushers_core'/*, 'bytepushers_restful', 'bytepushers_messaging'*/], function(BytePushers){
-    var Message = function(messageConfig){
-        var name = (Object.isDefined(messageConfig && Object.isString(messageConfig.name)))? messageConfig.name : null,
-            email = (Object.isDefined(messageConfig && Object.isString(messageConfig.email)))? messageConfig.email : null,
-            phoneNumber = (Object.isDefined(messageConfig && Object.isString(messageConfig.phoneNumber)))? messageConfig.phoneNumber : null,
-            message = (Object.isDefined(messageConfig && Object.isString(messageConfig.message)))? messageConfig.message : null;
+import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
 
-        this.toJSON = function(){
-            var jsonName = '"' + name+ '":',
-                jsonEmail = '"' + email+ '":',
-                jsonPhoneNumber = '"' + phoneNumber+ '":',
-                jsonMessage = '"' + message+ '":';
-            return
-            '{'+
-            'name: ' + jsonName +
-            'email: ' + jsonEmail+
-            'phoneNumber: ' + jsonPhoneNumber+
-            'message: ' + jsonMessage +
-            '}';
-        };
+let _toJSON = (name, email, phoneNumber, message) => {
+  var jsonName = '"' + name + '"',
+      jsonEmail = '"' + email + '"',
+      jsonPhoneNumber = '"' + phoneNumber + '"',
+      jsonMessage = '"' + message + '"',
+      json = '{' +
+          '"name": ' + jsonName + ',' +
+          '"email": ' + jsonEmail + ',' +
+          '"phoneNumber": ' + jsonPhoneNumber + ',' +
+          '"message": ' + jsonMessage +
+      '}';
+  return json;
+}
 
-        this.toUIObject = function(){
-            var UIObject = JSON.parse(this.toJSON());
+export default class Inquiry {
+    constructor(name, email, phoneNumber, message) {
+      this.name = (Object.isDefined(name)) ? name : null;
+      this.email = (Object.isDefined(email)) ? email : null;
+      this.phoneNumber = (Object.isDefined(phoneNumber)) ? phoneNumber : null;
+      this.message = (Object.isDefined(message)) ? message : null;
+    }
 
-            return UIObject;
-        };
-    };
-});
+    toJSON() {
+      return _toJSON(this.name, this.email, this.phoneNumber, this.message);
+    }
+
+    toUIObject() {
+      let UIObject = JSON.parse(_toJSON(this.name, this.email, this.phoneNumber, this.message));
+      return UIObject;
+    }
+}

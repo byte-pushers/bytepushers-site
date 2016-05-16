@@ -1,3 +1,25 @@
-/**
- * Created by jaredramirez on 5/15/16.
- */
+var path = require('path');
+var webpack = require('webpack');
+
+module.exports = {
+    entry: {},
+    output: {
+        path: path.resolve(__dirname, 'src/main/webapp'),
+        filename: '[name].bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            }
+        ]
+    },
+    stats: {
+        colors: true
+    },
+    devtool: 'source-map'
+};

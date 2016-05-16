@@ -1,8 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import controllers from './components/controllersModule';
+import controllers from './components/controllerModule';
+import directives from './shared/directives/directiveModule.js';
 
-angular.module('app', [uiRouter, controllers.name])
+/*working on directives, troubleshooting bug. TODO: finish debugging directives, then continue working on contact page and send data to service*/
+
+angular.module('app', [uiRouter, controllers.name, directives.name])
     .config(($urlRouterProvider, $stateProvider) => {
         $urlRouterProvider.otherwise("/home");
 
@@ -33,5 +36,3 @@ angular.module('app', [uiRouter, controllers.name])
                 controller:'ContactController'
             });
     });
-
-;

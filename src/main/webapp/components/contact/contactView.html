@@ -2,13 +2,30 @@
     <div class="col-md-12" background-image="{{img}}">
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12 white">
-        <form>
 
-            <input type="text" name="name" placeholder="name"> <br>
-            <input type="text" name="email" placeholder="email"> <br>
-            <input type="text" name="message" placeholder="name"> <br>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <form name="contactForm">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" data-ng-model="inquiryUIObject.name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" class="form-control" data-ng-model="inquiryUIObject.email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" data-ng-model="inquiryUIObject.phoneNumber" placeholder="Phone Number" maxlength="10" required>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <input type="text" class="form-control" data-ng-model="inquiryUIObject.message" placeholder="Message" required>
+            </div>
+            <div class="form-group text-right">
+                <button class="btn btn-lg btn-default" ng-click="click()" type="submit">Submit</button>
+            </div>
         </form>
     </div>
+    <div class="col-md-2"></div>
 </div>

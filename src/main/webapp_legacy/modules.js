@@ -8,5 +8,5 @@ define('modules', [
     /*directives*/
     'shared/directives/navigation/scrollDirective',
     'shared/directives/navigation/scrollTopDirective',
-    'shared/directives/view/backgroundImageDirective',
+    'shared/directives/view/backgroundImageDirective'
 ], function () {});
