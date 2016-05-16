@@ -54,43 +54,21 @@
 	
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 	
-	var _controllerModule = __webpack_require__(4);
+	var _routes = __webpack_require__(4);
+	
+	var _routes2 = _interopRequireDefault(_routes);
+	
+	var _controllerModule = __webpack_require__(5);
 	
 	var _controllerModule2 = _interopRequireDefault(_controllerModule);
 	
-	var _directiveModule = __webpack_require__(12);
+	var _directiveModule = __webpack_require__(13);
 	
 	var _directiveModule2 = _interopRequireDefault(_directiveModule);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/*working on directives, troubleshooting bug. TODO: finish debugging directives, then continue working on contact page and send data to service*/
-	
-	_angular2.default.module('app', [_angularUiRouter2.default, _controllerModule2.default.name, _directiveModule2.default.name]).config(function ($urlRouterProvider, $stateProvider) {
-	    $urlRouterProvider.otherwise("/home");
-	
-	    $stateProvider.state('home', {
-	        url: '/home',
-	        templateUrl: './components/home/homeView.html',
-	        controller: 'HomeController'
-	    }).state('services', {
-	        url: '/services',
-	        templateUrl: './components/services/servicesView.html',
-	        controller: 'ServicesController'
-	    }).state('works', {
-	        url: '/works',
-	        templateUrl: './components/works/worksView.html',
-	        controller: 'WorksController'
-	    }).state('about', {
-	        url: '/about',
-	        templateUrl: './components/about/aboutView.html',
-	        controller: 'AboutController'
-	    }).state('contact', {
-	        url: '/contact',
-	        templateUrl: './components/contact/contactView.html',
-	        controller: 'ContactController'
-	    });
-	});
+	_angular2.default.module('app', [_angularUiRouter2.default, _controllerModule2.default.name, _directiveModule2.default.name]).config(_routes2.default);
 
 /***/ },
 /* 1 */
@@ -18395,6 +18373,45 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var Routes = function Routes($urlRouterProvider, $stateProvider) {
+	    $urlRouterProvider.otherwise("/home");
+	
+	    $stateProvider.state('home', {
+	        url: '/home',
+	        templateUrl: './components/home/homeView.html',
+	        controller: 'HomeController'
+	    }).state('services', {
+	        url: '/services',
+	        templateUrl: './components/services/servicesView.html',
+	        controller: 'ServicesController'
+	    }).state('works', {
+	        url: '/works',
+	        templateUrl: './components/works/worksView.html',
+	        controller: 'WorksController'
+	    }).state('about', {
+	        url: '/about',
+	        templateUrl: './components/about/aboutView.html',
+	        controller: 'AboutController'
+	    }).state('contact', {
+	        url: '/contact',
+	        templateUrl: './components/contact/contactView.html',
+	        controller: 'ContactController'
+	    });
+	};
+	
+	Routes.$inject = ['$urlRouterProvider', '$stateProvider'];
+	
+	exports.default = Routes;
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18407,23 +18424,23 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _aboutController = __webpack_require__(5);
+	var _aboutController = __webpack_require__(6);
 	
 	var _aboutController2 = _interopRequireDefault(_aboutController);
 	
-	var _contactController = __webpack_require__(6);
+	var _contactController = __webpack_require__(7);
 	
 	var _contactController2 = _interopRequireDefault(_contactController);
 	
-	var _homeController = __webpack_require__(9);
+	var _homeController = __webpack_require__(10);
 	
 	var _homeController2 = _interopRequireDefault(_homeController);
 	
-	var _servicesController = __webpack_require__(10);
+	var _servicesController = __webpack_require__(11);
 	
 	var _servicesController2 = _interopRequireDefault(_servicesController);
 	
-	var _worksController = __webpack_require__(11);
+	var _worksController = __webpack_require__(12);
 	
 	var _worksController2 = _interopRequireDefault(_worksController);
 	
@@ -18432,7 +18449,7 @@
 	exports.default = _angular2.default.module('app.controllers', []).controller('AboutController', _aboutController2.default).controller('ContactController', _contactController2.default).controller('HomeController', _homeController2.default).controller('ServicesController', _servicesController2.default).controller('WorksController', _worksController2.default);
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18452,7 +18469,7 @@
 	exports.default = AboutController;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18463,7 +18480,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _Inquiry = __webpack_require__(7);
+	var _Inquiry = __webpack_require__(8);
 	
 	var _Inquiry2 = _interopRequireDefault(_Inquiry);
 	
@@ -18471,13 +18488,16 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
+	/*todo: inside contactView.html, ng-click="click()", doesn't point to the click function declared in controller
+	  next time: fix ng-click, then add additional fields to inquire. rename inquire(look at stickies). create and
+	  send data to conctactService*/
+	
 	var ContactController = function () {
 	    function ContactController() {
 	        _classCallCheck(this, ContactController);
 	
-	        var inquiry = new _Inquiry2.default(null, null, null, null);
 	        this.img = 'http://www.hdwallpapera.com/wp-content/uploads/2015/06/nature-image-mountain-home-ar.jpg';
-	        this.inquiryUIObject = new _Inquiry2.default(null, null, null, null).toUIObject();
+	        this.inquiryUIObject = new _Inquiry2.default().toUIObject();
 	    }
 	
 	    _createClass(ContactController, [{
@@ -18493,7 +18513,7 @@
 	exports.default = ContactController;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18504,7 +18524,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _bytepushersJsCore = __webpack_require__(8);
+	var _bytepushersJsCore = __webpack_require__(9);
 	
 	var _bytepushersJsCore2 = _interopRequireDefault(_bytepushersJsCore);
 	
@@ -18550,7 +18570,7 @@
 	exports.default = Inquiry;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -18923,7 +18943,7 @@
 	}(BytePushers);
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18946,7 +18966,7 @@
 	exports.default = HomeController;
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18966,7 +18986,7 @@
 	exports.default = ServicesController;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18986,7 +19006,7 @@
 	exports.default = WorksController;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18999,15 +19019,15 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _backgroundImageDirective = __webpack_require__(13);
+	var _backgroundImageDirective = __webpack_require__(14);
 	
 	var _backgroundImageDirective2 = _interopRequireDefault(_backgroundImageDirective);
 	
-	var _scrollNavbarDirective = __webpack_require__(14);
+	var _scrollNavbarDirective = __webpack_require__(15);
 	
 	var _scrollNavbarDirective2 = _interopRequireDefault(_scrollNavbarDirective);
 	
-	var _scrollTopDirective = __webpack_require__(15);
+	var _scrollTopDirective = __webpack_require__(16);
 	
 	var _scrollTopDirective2 = _interopRequireDefault(_scrollTopDirective);
 	
@@ -19022,7 +19042,7 @@
 	});
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19060,7 +19080,7 @@
 	exports.default = backgroundImageDirective;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19112,7 +19132,7 @@
 	exports.default = scrollNavbarDirective;
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
