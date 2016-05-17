@@ -62,13 +62,17 @@
 	
 	var _controllerModule2 = _interopRequireDefault(_controllerModule);
 	
-	var _directiveModule = __webpack_require__(13);
+	var _serviceModule = __webpack_require__(13);
+	
+	var _serviceModule2 = _interopRequireDefault(_serviceModule);
+	
+	var _directiveModule = __webpack_require__(15);
 	
 	var _directiveModule2 = _interopRequireDefault(_directiveModule);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_angular2.default.module('app', [_angularUiRouter2.default, _controllerModule2.default.name, _directiveModule2.default.name]).config(_routes2.default);
+	_angular2.default.module('app', [_angularUiRouter2.default, _controllerModule2.default.name, _serviceModule2.default.name, _directiveModule2.default.name]).config(_routes2.default);
 
 /***/ },
 /* 1 */
@@ -18386,23 +18390,28 @@
 	    $stateProvider.state('home', {
 	        url: '/home',
 	        templateUrl: './components/home/homeView.html',
-	        controller: 'HomeController'
+	        controller: 'HomeController',
+	        controllerAs: 'ctrl'
 	    }).state('services', {
 	        url: '/services',
 	        templateUrl: './components/services/servicesView.html',
-	        controller: 'ServicesController'
+	        controller: 'ServicesController',
+	        controllerAs: 'ctrl'
 	    }).state('works', {
 	        url: '/works',
 	        templateUrl: './components/works/worksView.html',
-	        controller: 'WorksController'
+	        controller: 'WorksController',
+	        controllerAs: 'ctrl'
 	    }).state('about', {
 	        url: '/about',
 	        templateUrl: './components/about/aboutView.html',
-	        controller: 'AboutController'
+	        controller: 'AboutController',
+	        controllerAs: 'ctrl'
 	    }).state('contact', {
 	        url: '/contact',
 	        templateUrl: './components/contact/contactView.html',
-	        controller: 'ContactController'
+	        controller: 'ContactController',
+	        controllerAs: 'ctrl'
 	    });
 	};
 	
@@ -18492,23 +18501,37 @@
 	  next time: fix ng-click, then add additional fields to inquire. rename inquire(look at stickies). create and
 	  send data to conctactService*/
 	
+	var _resetFields = function _resetFields(inquiry) {
+	    inquiry.name = '';
+	    inquiry.email = '';
+	    inquiry.phoneNumber = '';
+	    inquiry.message = '';
+	};
+	
 	var ContactController = function () {
-	    function ContactController() {
+	    function ContactController(ContactService) {
 	        _classCallCheck(this, ContactController);
 	
 	        this.img = 'http://www.hdwallpapera.com/wp-content/uploads/2015/06/nature-image-mountain-home-ar.jpg';
 	        this.inquiryUIObject = new _Inquiry2.default().toUIObject();
+	        this.contactService = ContactService;
+	
+	        _resetFields(this.inquiryUIObject);
 	    }
 	
 	    _createClass(ContactController, [{
 	        key: 'click',
-	        value: function click(isValid) {
-	            console.log(this.inquiryUIObject);
+	        value: function click() {
+	            this.contactService.setInquiry(this.inquiryUIObject);
+	            _resetFields(this.inquiryUIObject);
+	            this.response = 'Message sent!';
 	        }
 	    }]);
 	
 	    return ContactController;
 	}();
+	
+	ContactController.$inject = ['ConctactService'];
 	
 	exports.default = ContactController;
 
@@ -18957,7 +18980,7 @@
 	var HomeController = function HomeController() {
 	    _classCallCheck(this, HomeController);
 	
-	    this.backgroundImg = 'http://everystockphoto.s3.amazonaws.com/california_cityscape_82108_o.jpg';
+	    this.img = 'http://everystockphoto.s3.amazonaws.com/california_cityscape_82108_o.jpg';
 	    this.img1 = 'https://upload.wikimedia.org/wikipedia/commons/6/67/Hoffl%C3%B6th(T%C3%B6Vo-Cl%C3%B6rath)-2(400x400).jpg';
 	    this.img2 = 'https://cdn.tutsplus.com/vector/uploads/2014/01/howtodrawbears-400x400.jpg';
 	    this.img3 = 'http://cdn-img.health.com/sites/default/files/styles/400x400/public/migration/img/web/2013/02/slides/breakfast-foods-400x400.jpg?itok=1h7iFRNF';
@@ -19000,7 +19023,7 @@
 	var WorksController = function WorksController() {
 	    _classCallCheck(this, WorksController);
 	
-	    this.img = '../../IMG_0549.jpg';
+	    this.img = 'https://c6.staticflickr.com/4/3594/3464353533_d5cf23f0fd_b.jpg';
 	};
 	
 	exports.default = WorksController;
@@ -19019,15 +19042,82 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _backgroundImageDirective = __webpack_require__(14);
+	var _contactService = __webpack_require__(14);
+	
+	var _contactService2 = _interopRequireDefault(_contactService);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('app.services', []).service('ConctactService', _contactService2.default);
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _Inquiry = __webpack_require__(8);
+	
+	var _Inquiry2 = _interopRequireDefault(_Inquiry);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var ContactService = function () {
+	    function ContactService() {
+	        _classCallCheck(this, ContactService);
+	
+	        this.inquiry = null;
+	    }
+	
+	    _createClass(ContactService, [{
+	        key: 'setInquiry',
+	        value: function setInquiry(inquiryConfig) {
+	            console.log('inquiry set');
+	            this.inquiry = new _Inquiry2.default(inquiryConfig.name, inquiryConfig.email, inquiryConfig.phoneNumber, inquiryConfig.message);
+	        }
+	    }, {
+	        key: 'getInquiry',
+	        value: function getInquiry() {
+	            return this.inquiry;
+	        }
+	    }]);
+	
+	    return ContactService;
+	}();
+	
+	exports.default = ContactService;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _angular = __webpack_require__(1);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _backgroundImageDirective = __webpack_require__(16);
 	
 	var _backgroundImageDirective2 = _interopRequireDefault(_backgroundImageDirective);
 	
-	var _scrollNavbarDirective = __webpack_require__(15);
+	var _scrollNavbarDirective = __webpack_require__(17);
 	
 	var _scrollNavbarDirective2 = _interopRequireDefault(_scrollNavbarDirective);
 	
-	var _scrollTopDirective = __webpack_require__(16);
+	var _scrollTopDirective = __webpack_require__(18);
 	
 	var _scrollTopDirective2 = _interopRequireDefault(_scrollTopDirective);
 	
@@ -19042,7 +19132,7 @@
 	});
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19080,7 +19170,7 @@
 	exports.default = backgroundImageDirective;
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19132,7 +19222,7 @@
 	exports.default = scrollNavbarDirective;
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';

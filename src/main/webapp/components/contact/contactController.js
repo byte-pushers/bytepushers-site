@@ -1,16 +1,28 @@
 import Inquiry from '../../assets/js/Inquiry';
 
-/*todo: inside contactView.html, ng-click="click()", doesn't point to the click function declared in controller
-  next time: fix ng-click, then add additional fields to inquire. rename inquire(look at stickies). create and
-  send data to conctactService*/
+let _resetFields = (inquiry) => {
+    inquiry.name = '';
+    inquiry.email = '';
+    inquiry.phoneNumber = '';
+    inquiry.message = '';
+}
 
-export default class ContactController {
-    constructor() {
+class ContactController {
+    constructor(ContactService) {
         this.img = 'http://www.hdwallpapera.com/wp-content/uploads/2015/06/nature-image-mountain-home-ar.jpg';
         this.inquiryUIObject = new Inquiry().toUIObject();
+        this.contactService = ContactService;
+
+        _resetFields(this.inquiryUIObject);
     }
 
-    click(isValid) {
-        console.log(this.inquiryUIObject);
+    click() {
+        this.contactService.setInquiry(this.inquiryUIObject);
+        _resetFields(this.inquiryUIObject);
+        this.response = 'Message sent!'
     }
 }
+
+ContactController.$inject = ['ConctactService']
+
+export default ContactController;

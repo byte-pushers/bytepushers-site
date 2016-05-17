@@ -1,3 +1,5 @@
+/*todo: add additional fields to inquire. rename inquire(look at stickies). */
+
 import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
 
 let _toJSON = (name, email, phoneNumber, message) => {

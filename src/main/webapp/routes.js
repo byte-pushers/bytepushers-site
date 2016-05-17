@@ -5,27 +5,32 @@ const Routes = ($urlRouterProvider, $stateProvider) => {
       .state('home',{
           url: '/home',
           templateUrl: './components/home/homeView.html',
-          controller:'HomeController'
+          controller:'HomeController',
+          controllerAs: 'ctrl'
       })
       .state('services',{
           url: '/services',
           templateUrl: './components/services/servicesView.html',
-          controller:'ServicesController'
+          controller:'ServicesController',
+          controllerAs: 'ctrl'
       })
       .state('works',{
           url: '/works',
           templateUrl: './components/works/worksView.html',
-          controller:'WorksController'
+          controller:'WorksController',
+          controllerAs: 'ctrl'
       })
       .state('about',{
           url: '/about',
           templateUrl: './components/about/aboutView.html',
-          controller:'AboutController'
+          controller:'AboutController',
+          controllerAs: 'ctrl'
       })
       .state('contact',{
           url: '/contact',
           templateUrl: './components/contact/contactView.html',
-          controller:'ContactController'
+          controller:'ContactController',
+          controllerAs: 'ctrl'
       });
 }
 
