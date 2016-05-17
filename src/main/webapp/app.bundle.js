@@ -18487,7 +18487,7 @@
 	    value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* todo: add projectSize html elemtents. */
 	
 	var _Inquiry = __webpack_require__(8);
 	
@@ -19170,7 +19170,6 @@
 	        value: function setInquiry(inquiryConfig) {
 	            var address = new _Address2.default(inquiryConfig.address.city, inquiryConfig.address.country, inquiryConfig.address.state, inquiryConfig.address.street, inquiryConfig.address.zip);
 	            this.inquiry = new _Inquiry2.default(address, inquiryConfig.company, inquiryConfig.description, inquiryConfig.email, inquiryConfig.funded, inquiryConfig.nameFirst, inquiryConfig.nameLast, inquiryConfig.phoneNumber, inquiryConfig.projectSize, inquiryConfig.projectType);
-	            console.log('inquiry set ' + this.inquiry.toUIObject);
 	        }
 	    }, {
 	        key: 'getInquiry',

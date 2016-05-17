@@ -1,3 +1,7 @@
 .form-control.checkbox {
     box-shadow: 0 0 0em white;
 }
+
+.row.padding {
+    padding-top: 2em;
+}

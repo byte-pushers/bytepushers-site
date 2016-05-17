@@ -3,7 +3,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row padding">
     <div class="col-md-8 col-md-offset-2">
         <form name="contactForm">
             <div class="row">
@@ -27,6 +27,10 @@
             <div class="form-group">
                 <label>Phone Number<span class="text-primary">*</span></label>
                 <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.phoneNumber" placeholder="Phone Number" maxlength="10" required>
+            </div>
+            <div class="form-group" >
+                <label>Description<span class="text-primary">*</span></label>
+                <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.description" placeholder="Description" required>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -84,8 +88,10 @@
                 </div>
             </div>
             <div class="form-group" >
-                <label>Description<span class="text-primary">*</span></label>
-                <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.description" placeholder="Description" required>
+                <label>Project Size</label> <br>
+                <label class="radio-inline"><input type="radio" value="small" data-ng-model="ctrl.inquiryUIObject.projectSize">Small ($0-$5,000)</label>
+                <label class="radio-inline"><input type="radio" value="medium" data-ng-model="ctrl.inquiryUIObject.projectSize">Medium ($5,000-$15,000)</label>
+                <label class="radio-inline"><input type="radio" value="large" data-ng-model="ctrl.inquiryUIObject.projectSize">Large (<$15,000)</label>
             </div>
             <div class="form-group text-right">
                 <button class="btn btn-lg btn-default" data-ng-click="ctrl.click()" type="submit">Submit</button>
