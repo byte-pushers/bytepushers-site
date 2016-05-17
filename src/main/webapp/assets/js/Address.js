@@ -1,6 +1,6 @@
 import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
 
-let _toJSON = (city, country, street, state, zip) => {
+let _toJSON = (city, country, state, street, zip) => {
   let jsonCity = '"' + city + '"',
       jsonCountry = '"' + country + '"',
       jsonState = '"' + state + '"',
@@ -11,13 +11,13 @@ let _toJSON = (city, country, street, state, zip) => {
           '"country": ' + jsonCountry + ',' +
           '"street": ' + jsonState + ',' +
           '"state": ' + jsonStreet + ',' +
-          '"zip": ' + jsonZip + 
+          '"zip": ' + jsonZip +
       '}';
   return json;
 }
 
 export default class Address {
-    constructor(city, country, street, state, zip) {
+    constructor(city, country, state, street, zip) {
       this.city = (Object.isDefined(city)) ? city : null;
       this.country = (Object.isDefined(country)) ? country : null;
       this.state = (Object.isDefined(state)) ? state : null;

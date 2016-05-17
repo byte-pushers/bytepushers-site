@@ -76,14 +76,14 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>State</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.state" placeholder="State" required>
+                        <label>State</label> <br>
+                        <select data-ng-model="ctrl.inquiryUIObject.address.state" ng-options="s as s for s in ctrl.states" placeholder="Select state"></select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.country" placeholder="Country" required>
+                        <label>Country</label> <br>
+                        <select data-ng-model="ctrl.inquiryUIObject.address.country" ng-options="s as s for s in ctrl.countries"placeholder="Select country"></select>
                     </div>
                 </div>
             </div>
