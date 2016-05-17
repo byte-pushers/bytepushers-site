@@ -1,10 +1,23 @@
+/* todo: add projectSize html elemtents. */
+
 import Inquiry from '../../assets/js/Inquiry';
+import Address from '../../assets/js/Address'
 
 let _resetFields = (inquiry) => {
-    inquiry.name = '';
+    inquiry.address.city = '';
+    inquiry.address.country = '';
+    inquiry.address.street = '';
+    inquiry.address.state = '';
+    inquiry.address.zip = '';
+    inquiry.company = '';
+    inquiry.description = '';
     inquiry.email = '';
+    inquiry.funded = '';
+    inquiry.nameFirst = '';
+    inquiry.nameLast = '';
     inquiry.phoneNumber = '';
-    inquiry.message = '';
+    inquiry.projectSize = '';
+    inquiry.projectType = '';
 }
 
 class ContactController {
@@ -20,6 +33,7 @@ class ContactController {
         this.contactService.setInquiry(this.inquiryUIObject);
         _resetFields(this.inquiryUIObject);
         this.response = 'Message sent!'
+        console.log(this.contactService.getInquiry());
     }
 }
 

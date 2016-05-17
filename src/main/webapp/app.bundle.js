@@ -62,11 +62,11 @@
 	
 	var _controllerModule2 = _interopRequireDefault(_controllerModule);
 	
-	var _serviceModule = __webpack_require__(13);
+	var _serviceModule = __webpack_require__(14);
 	
 	var _serviceModule2 = _interopRequireDefault(_serviceModule);
 	
-	var _directiveModule = __webpack_require__(15);
+	var _directiveModule = __webpack_require__(16);
 	
 	var _directiveModule2 = _interopRequireDefault(_directiveModule);
 	
@@ -18441,15 +18441,15 @@
 	
 	var _contactController2 = _interopRequireDefault(_contactController);
 	
-	var _homeController = __webpack_require__(10);
+	var _homeController = __webpack_require__(11);
 	
 	var _homeController2 = _interopRequireDefault(_homeController);
 	
-	var _servicesController = __webpack_require__(11);
+	var _servicesController = __webpack_require__(12);
 	
 	var _servicesController2 = _interopRequireDefault(_servicesController);
 	
-	var _worksController = __webpack_require__(12);
+	var _worksController = __webpack_require__(13);
 	
 	var _worksController2 = _interopRequireDefault(_worksController);
 	
@@ -18493,19 +18493,29 @@
 	
 	var _Inquiry2 = _interopRequireDefault(_Inquiry);
 	
+	var _Address = __webpack_require__(10);
+	
+	var _Address2 = _interopRequireDefault(_Address);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	/*todo: inside contactView.html, ng-click="click()", doesn't point to the click function declared in controller
-	  next time: fix ng-click, then add additional fields to inquire. rename inquire(look at stickies). create and
-	  send data to conctactService*/
-	
 	var _resetFields = function _resetFields(inquiry) {
-	    inquiry.name = '';
+	    inquiry.address.city = '';
+	    inquiry.address.country = '';
+	    inquiry.address.street = '';
+	    inquiry.address.state = '';
+	    inquiry.address.zip = '';
+	    inquiry.company = '';
+	    inquiry.description = '';
 	    inquiry.email = '';
+	    inquiry.funded = '';
+	    inquiry.nameFirst = '';
+	    inquiry.nameLast = '';
 	    inquiry.phoneNumber = '';
-	    inquiry.message = '';
+	    inquiry.projectSize = '';
+	    inquiry.projectType = '';
 	};
 	
 	var ContactController = function () {
@@ -18525,6 +18535,7 @@
 	            this.contactService.setInquiry(this.inquiryUIObject);
 	            _resetFields(this.inquiryUIObject);
 	            this.response = 'Message sent!';
+	            console.log(this.contactService.getInquiry());
 	        }
 	    }]);
 	
@@ -18551,39 +18562,54 @@
 	
 	var _bytepushersJsCore2 = _interopRequireDefault(_bytepushersJsCore);
 	
+	var _Address = __webpack_require__(10);
+	
+	var _Address2 = _interopRequireDefault(_Address);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var _toJSON = function _toJSON(name, email, phoneNumber, message) {
-	  var jsonName = '"' + name + '"',
+	var _toJSON = function _toJSON(address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
+	  var jsonAddress = address.toJSON(),
+	      jsonCompany = '"' + company + '"',
+	      jsonDescription = '"' + description + '"',
 	      jsonEmail = '"' + email + '"',
+	      jsonFunded = '"' + funded + '"',
+	      jsonNameFirst = '"' + nameFirst + '"',
+	      jsonNameLast = '"' + nameLast + '"',
 	      jsonPhoneNumber = '"' + phoneNumber + '"',
-	      jsonMessage = '"' + message + '"',
-	      json = '{' + '"name": ' + jsonName + ',' + '"email": ' + jsonEmail + ',' + '"phoneNumber": ' + jsonPhoneNumber + ',' + '"message": ' + jsonMessage + '}';
+	      jsonProjectSize = '"' + projectSize + '"',
+	      jsonProjectType = '"' + projectType + '"',
+	      json = '{' + '"address": ' + jsonAddress + ',' + '"description": ' + jsonDescription + ',' + '"company": ' + jsonCompany + ',' + '"email": ' + jsonEmail + ',' + '"funded": ' + jsonFunded + ',' + '"nameFirst": ' + jsonNameFirst + ',' + '"nameLast": ' + jsonNameLast + ',' + '"phoneNumber": ' + jsonPhoneNumber + ',' + '"projectSize": ' + jsonProjectSize + ',' + '"projectType": ' + jsonProjectType + '}';
 	  return json;
 	};
 	
 	var Inquiry = function () {
-	  function Inquiry(name, email, phoneNumber, message) {
+	  function Inquiry(address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
 	    _classCallCheck(this, Inquiry);
 	
-	    this.name = Object.isDefined(name) ? name : null;
+	    this.address = Object.isDefined(address) ? address : new _Address2.default();
+	    this.company = Object.isDefined(company) ? company : null;
+	    this.description = Object.isDefined(description) ? description : null;
 	    this.email = Object.isDefined(email) ? email : null;
+	    this.funded = Object.isDefined(funded) ? funded : null;
+	    this.nameFirst = Object.isDefined(nameFirst) && Object.isString(nameFirst) ? nameFirst : null;
+	    this.nameLast = Object.isDefined(nameLast) && Object.isString(nameLast) ? nameLast : null;
 	    this.phoneNumber = Object.isDefined(phoneNumber) ? phoneNumber : null;
-	    this.message = Object.isDefined(message) ? message : null;
+	    this.projectSize = Object.isDefined(projectSize) ? projectSize : null;
+	    this.projectType = Object.isDefined(projectType) ? projectType : null;
 	  }
 	
 	  _createClass(Inquiry, [{
 	    key: 'toJSON',
 	    value: function toJSON() {
-	      return _toJSON(this.name, this.email, this.phoneNumber, this.message);
+	      return _toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType);
 	    }
 	  }, {
 	    key: 'toUIObject',
 	    value: function toUIObject() {
-	      var UIObject = JSON.parse(_toJSON(this.name, this.email, this.phoneNumber, this.message));
-	      return UIObject;
+	      return JSON.parse(_toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType));
 	    }
 	  }]);
 	
@@ -18967,6 +18993,64 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _bytepushersJsCore = __webpack_require__(9);
+	
+	var _bytepushersJsCore2 = _interopRequireDefault(_bytepushersJsCore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var _toJSON = function _toJSON(city, country, street, state, zip) {
+	  var jsonCity = '"' + city + '"',
+	      jsonCountry = '"' + country + '"',
+	      jsonState = '"' + state + '"',
+	      jsonStreet = '"' + street + '"',
+	      jsonZip = '"' + zip + '"',
+	      json = '{' + '"city": ' + jsonCity + ',' + '"country": ' + jsonCountry + ',' + '"street": ' + jsonState + ',' + '"state": ' + jsonStreet + ',' + '"zip": ' + jsonZip + '}';
+	  return json;
+	};
+	
+	var Address = function () {
+	  function Address(city, country, street, state, zip) {
+	    _classCallCheck(this, Address);
+	
+	    this.city = Object.isDefined(city) ? city : null;
+	    this.country = Object.isDefined(country) ? country : null;
+	    this.state = Object.isDefined(state) ? state : null;
+	    this.street = Object.isDefined(street) ? street : null;
+	    this.zip = Object.isDefined(zip) ? zip : null;
+	  }
+	
+	  _createClass(Address, [{
+	    key: 'toJSON',
+	    value: function toJSON() {
+	      return _toJSON(this.city, this.country, this.state, this.street, this.zip);
+	    }
+	  }, {
+	    key: 'toUIObject',
+	    value: function toUIObject() {
+	      return JSON.parse(_toJSON(this.city, this.country, this.state, this.street, this.zip));
+	    }
+	  }]);
+	
+	  return Address;
+	}();
+	
+	exports.default = Address;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18989,7 +19073,7 @@
 	exports.default = HomeController;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19009,7 +19093,7 @@
 	exports.default = ServicesController;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19029,7 +19113,7 @@
 	exports.default = WorksController;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19042,7 +19126,7 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _contactService = __webpack_require__(14);
+	var _contactService = __webpack_require__(15);
 	
 	var _contactService2 = _interopRequireDefault(_contactService);
 	
@@ -19051,7 +19135,7 @@
 	exports.default = _angular2.default.module('app.services', []).service('ConctactService', _contactService2.default);
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19065,6 +19149,10 @@
 	var _Inquiry = __webpack_require__(8);
 	
 	var _Inquiry2 = _interopRequireDefault(_Inquiry);
+	
+	var _Address = __webpack_require__(10);
+	
+	var _Address2 = _interopRequireDefault(_Address);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -19080,8 +19168,9 @@
 	    _createClass(ContactService, [{
 	        key: 'setInquiry',
 	        value: function setInquiry(inquiryConfig) {
-	            console.log('inquiry set');
-	            this.inquiry = new _Inquiry2.default(inquiryConfig.name, inquiryConfig.email, inquiryConfig.phoneNumber, inquiryConfig.message);
+	            var address = new _Address2.default(inquiryConfig.address.city, inquiryConfig.address.country, inquiryConfig.address.state, inquiryConfig.address.street, inquiryConfig.address.zip);
+	            this.inquiry = new _Inquiry2.default(address, inquiryConfig.company, inquiryConfig.description, inquiryConfig.email, inquiryConfig.funded, inquiryConfig.nameFirst, inquiryConfig.nameLast, inquiryConfig.phoneNumber, inquiryConfig.projectSize, inquiryConfig.projectType);
+	            console.log('inquiry set ' + this.inquiry.toUIObject);
 	        }
 	    }, {
 	        key: 'getInquiry',
@@ -19096,7 +19185,7 @@
 	exports.default = ContactService;
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19109,15 +19198,15 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _backgroundImageDirective = __webpack_require__(16);
+	var _backgroundImageDirective = __webpack_require__(17);
 	
 	var _backgroundImageDirective2 = _interopRequireDefault(_backgroundImageDirective);
 	
-	var _scrollNavbarDirective = __webpack_require__(17);
+	var _scrollNavbarDirective = __webpack_require__(18);
 	
 	var _scrollNavbarDirective2 = _interopRequireDefault(_scrollNavbarDirective);
 	
-	var _scrollTopDirective = __webpack_require__(18);
+	var _scrollTopDirective = __webpack_require__(19);
 	
 	var _scrollTopDirective2 = _interopRequireDefault(_scrollTopDirective);
 	
@@ -19132,7 +19221,7 @@
 	});
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19170,7 +19259,7 @@
 	exports.default = backgroundImageDirective;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19222,7 +19311,7 @@
 	exports.default = scrollNavbarDirective;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -1,35 +1,52 @@
-/*todo: add additional fields to inquire. rename inquire(look at stickies). */
-
 import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
+import Address from './Address'
 
-let _toJSON = (name, email, phoneNumber, message) => {
-  var jsonName = '"' + name + '"',
+let _toJSON = (address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) => {
+  let jsonAddress= address.toJSON(),
+      jsonCompany = '"' + company + '"',
+      jsonDescription = '"' + description + '"',
       jsonEmail = '"' + email + '"',
+      jsonFunded = '"' + funded + '"',
+      jsonNameFirst = '"' + nameFirst + '"',
+      jsonNameLast = '"' + nameLast + '"',
       jsonPhoneNumber = '"' + phoneNumber + '"',
-      jsonMessage = '"' + message + '"',
+      jsonProjectSize= '"' + projectSize + '"',
+      jsonProjectType = '"' + projectType + '"',
       json = '{' +
-          '"name": ' + jsonName + ',' +
+          '"address": ' + jsonAddress + ',' +
+          '"description": ' + jsonDescription + ',' +
+          '"company": ' + jsonCompany + ',' +
           '"email": ' + jsonEmail + ',' +
+          '"funded": ' + jsonFunded + ',' +
+          '"nameFirst": ' + jsonNameFirst + ',' +
+          '"nameLast": ' + jsonNameLast + ',' +
           '"phoneNumber": ' + jsonPhoneNumber + ',' +
-          '"message": ' + jsonMessage +
+          '"projectSize": ' + jsonProjectSize + ',' +
+          '"projectType": ' + jsonProjectType +
       '}';
   return json;
 }
 
 export default class Inquiry {
-    constructor(name, email, phoneNumber, message) {
-      this.name = (Object.isDefined(name)) ? name : null;
+    constructor(address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
+      this.address = (Object.isDefined(address)) ? address : new Address();
+      this.company = (Object.isDefined(company)) ? company : null;
+      this.description = (Object.isDefined(description)) ? description : null;
       this.email = (Object.isDefined(email)) ? email : null;
+      this.funded = (Object.isDefined(funded)) ? funded : null;
+      this.nameFirst = (Object.isDefined(nameFirst) && Object.isString(nameFirst)) ? nameFirst : null;
+      this.nameLast = (Object.isDefined(nameLast) && Object.isString(nameLast)) ? nameLast : null;
       this.phoneNumber = (Object.isDefined(phoneNumber)) ? phoneNumber : null;
-      this.message = (Object.isDefined(message)) ? message : null;
+      this.projectSize = (Object.isDefined(projectSize)) ? projectSize : null;
+      this.projectType = (Object.isDefined(projectType)) ? projectType : null;
+
     }
 
     toJSON() {
-      return _toJSON(this.name, this.email, this.phoneNumber, this.message);
+      return _toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType);
     }
 
     toUIObject() {
-      let UIObject = JSON.parse(_toJSON(this.name, this.email, this.phoneNumber, this.message));
-      return UIObject;
+      return JSON.parse(_toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType));
     }
 }
