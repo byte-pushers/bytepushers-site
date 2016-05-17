@@ -39,11 +39,13 @@ class ContactController {
         _resetFields(this.inquiryUIObject);
     }
 
-    click() {
-        this.contactService.setInquiry(this.inquiryUIObject);
-        _resetFields(this.inquiryUIObject);
-        this.response = 'Message sent!'
-        console.log(this.contactService.getInquiry());
+    click(isValid) {
+        if(isValid){
+          this.contactService.setInquiry(this.inquiryUIObject);
+          _resetFields(this.inquiryUIObject);
+          this.response = 'Message sent!'
+          console.log(this.contactService.getInquiry());
+        }
     }
 }
 

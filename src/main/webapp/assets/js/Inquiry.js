@@ -30,13 +30,13 @@ let _toJSON = (address, company, description, email, funded, nameFirst, nameLast
 export default class Inquiry {
     constructor(address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
       this.address = (Object.isDefined(address)) ? address : new Address();
-      this.company = (Object.isDefined(company)) ? company : null;
-      this.description = (Object.isDefined(description)) ? description : null;
+      this.company = (Object.isDefined(company && Object.isString(company))) ? company : null;
+      this.description = (Object.isDefined(description) && Object.isString(description)) ? description : null;
       this.email = (Object.isDefined(email)) ? email : null;
-      this.funded = (Object.isDefined(funded)) ? funded : null;
+      this.funded = (Object.isDefined(funded) && Object.isBoolean(funded)) ? funded : null;
       this.nameFirst = (Object.isDefined(nameFirst) && Object.isString(nameFirst)) ? nameFirst : null;
       this.nameLast = (Object.isDefined(nameLast) && Object.isString(nameLast)) ? nameLast : null;
-      this.phoneNumber = (Object.isDefined(phoneNumber)) ? phoneNumber : null;
+      this.phoneNumber = (Object.isDefined(phoneNumber) && Object.isString(phoneNumber)) ? phoneNumber : null;
       this.projectSize = (Object.isDefined(projectSize)) ? projectSize : null;
       this.projectType = (Object.isDefined(projectType)) ? projectType : null;
 

@@ -18506,7 +18506,7 @@
 	};
 	
 	var _getCountries = function _getCountries() {
-	    return ['United States', 'Canada', 'Mexico', 'United Kingdom.'];
+	    return ['United States', 'Canada', 'Mexico', 'United Kingdom'];
 	};
 	
 	var _resetFields = function _resetFields(inquiry) {
@@ -18541,11 +18541,13 @@
 	
 	    _createClass(ContactController, [{
 	        key: 'click',
-	        value: function click() {
-	            this.contactService.setInquiry(this.inquiryUIObject);
-	            _resetFields(this.inquiryUIObject);
-	            this.response = 'Message sent!';
-	            console.log(this.contactService.getInquiry());
+	        value: function click(isValid) {
+	            if (isValid) {
+	                this.contactService.setInquiry(this.inquiryUIObject);
+	                _resetFields(this.inquiryUIObject);
+	                this.response = 'Message sent!';
+	                console.log(this.contactService.getInquiry());
+	            }
 	        }
 	    }]);
 	
@@ -18600,13 +18602,13 @@
 	    _classCallCheck(this, Inquiry);
 	
 	    this.address = Object.isDefined(address) ? address : new _Address2.default();
-	    this.company = Object.isDefined(company) ? company : null;
-	    this.description = Object.isDefined(description) ? description : null;
+	    this.company = Object.isDefined(company && Object.isString(company)) ? company : null;
+	    this.description = Object.isDefined(description) && Object.isString(description) ? description : null;
 	    this.email = Object.isDefined(email) ? email : null;
-	    this.funded = Object.isDefined(funded) ? funded : null;
+	    this.funded = Object.isDefined(funded) && Object.isBoolean(funded) ? funded : null;
 	    this.nameFirst = Object.isDefined(nameFirst) && Object.isString(nameFirst) ? nameFirst : null;
 	    this.nameLast = Object.isDefined(nameLast) && Object.isString(nameLast) ? nameLast : null;
-	    this.phoneNumber = Object.isDefined(phoneNumber) ? phoneNumber : null;
+	    this.phoneNumber = Object.isDefined(phoneNumber) && Object.isString(phoneNumber) ? phoneNumber : null;
 	    this.projectSize = Object.isDefined(projectSize) ? projectSize : null;
 	    this.projectType = Object.isDefined(projectType) ? projectType : null;
 	  }
@@ -19035,11 +19037,11 @@
 	  function Address(city, country, state, street, zip) {
 	    _classCallCheck(this, Address);
 	
-	    this.city = Object.isDefined(city) ? city : null;
-	    this.country = Object.isDefined(country) ? country : null;
-	    this.state = Object.isDefined(state) ? state : null;
-	    this.street = Object.isDefined(street) ? street : null;
-	    this.zip = Object.isDefined(zip) ? zip : null;
+	    this.city = Object.isDefined(city) && Object.isString(city) ? city : null;
+	    this.country = Object.isDefined(country) && Object.isString(country) ? country : null;
+	    this.state = Object.isDefined(state) && Object.isString(state) ? state : null;
+	    this.street = Object.isDefined(street) && Object.isString(street) ? street : null;
+	    this.zip = Object.isDefined(zip) && Object.isString(city) ? zip : null;
 	  }
 	
 	  _createClass(Address, [{

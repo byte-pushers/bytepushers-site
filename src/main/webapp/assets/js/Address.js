@@ -18,11 +18,11 @@ let _toJSON = (city, country, state, street, zip) => {
 
 export default class Address {
     constructor(city, country, state, street, zip) {
-      this.city = (Object.isDefined(city)) ? city : null;
-      this.country = (Object.isDefined(country)) ? country : null;
-      this.state = (Object.isDefined(state)) ? state : null;
-      this.street = (Object.isDefined(street)) ? street : null;
-      this.zip = (Object.isDefined(zip)) ? zip : null;
+      this.city = (Object.isDefined(city) && Object.isString(city)) ? city : null;
+      this.country = (Object.isDefined(country) && Object.isString(country)) ? country : null;
+      this.state = (Object.isDefined(state) && Object.isString(state)) ? state : null;
+      this.street = (Object.isDefined(street) && Object.isString(street)) ? street : null;
+      this.zip = (Object.isDefined(zip) && Object.isString(city)) ? zip : null;
     }
 
     toJSON() {
