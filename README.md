@@ -14,4 +14,4 @@ Navigate to [http://localhost:8080](http://localhost:8080) to view & interact wi
 
 Run `http-server src/main/webapp` in the project directory terminal.
 
-Navagate to [http://localhost:8080/src/main/webapp](http://localhost:8080/src/main/webapp/index.html) to view the website.
+Navigate to [http://localhost:8080/src/main/webapp](http://localhost:8080/src/main/webapp/index.html) to view the website.
