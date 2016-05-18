@@ -1,4 +1,4 @@
-import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
+import Bytepushers from 'bytepushers-js-core';
 import Address from './Address'
 
 let _toJSON = (address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) => {

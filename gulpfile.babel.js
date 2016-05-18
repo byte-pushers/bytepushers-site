@@ -1,13 +1,11 @@
 import gulp from 'gulp';
 import del from 'del';
-import rename from 'gulp-rename';
+import webpackConst from 'webpack';
+import gutil from 'gulp-util';
 import cssmin from 'gulp-cssmin';
 import concat from 'gulp-concat';
 import inject from 'gulp-inject';
-import wiredep from 'wiredep';
-
-import webpackConst from 'webpack';
-import gutil from 'gulp-util';
+import mainBowerFiles from 'main-bower-files';
 
 const clean = () => { return del(['./release']); };
 
@@ -48,7 +46,7 @@ const injector = () => {
 };
 
 const bower = () => {
-    return gulp.src(['./release/index.html']).pipe(wiredep({dependencies: false, devDependencies: true})).pipe(gulp.dest('./release'));
+    return gulp.src(['./release/index.html']).pipe(inject(gulp.src(mainBowerFiles()))).pipe(gulp.dest('./release'));
 };
 
 const watch_build = () => {

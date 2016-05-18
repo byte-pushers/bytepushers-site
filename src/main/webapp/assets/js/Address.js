@@ -1,4 +1,4 @@
-import Bytepushers from '../libs/bytepushers/bytepushers-js-core.min';
+import Bytepushers from 'bytepushers-js-core';
 
 let _toJSON = (city, country, state, street, zip) => {
   let jsonCity = '"' + city + '"',

@@ -1,13 +1,11 @@
 {
   "name": "website-bytepushers",
   "description": "Byte Pusher Inc. website.",
-  "main": "index.js",
+  "main": "src/main/webapp/index.html",
   "authors": [
     "Jared Ramirez <jared.ramirez@bytepushers.software> (http://bytepushers.software)"
   ],
   "license": "ISC",
-  "moduleType": [],
-  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,9 +13,9 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "dependencies": {
     "angular-ui-router": "^0.2.18",
-    "domReady": "^2.0.1",
-    "angular": "^1.5.5"
+    "angular": "^1.5.5",
+    "bytepushers-js-core": "0.0.40"
   }
 }
