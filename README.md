@@ -8,10 +8,10 @@ Clone project and run `npm install` and `gulp` in project directory terminal.
 
 Run `http-server release` in the project directory terminal.
 
-Navigate to [localhost:8080](localhost:8080) to view & interact with the site.
+Navigate to [http://localhost:8080](http://localhost:8080) to view & interact with the site.
 
 ## To launch site from src/main/webapp
 
 Run `http-server src/main/webapp` in the project directory terminal.
 
-Navagate to [localhost:8080/src/main/webapp](localhost:8080/src/main/webapp) to view the website.
+Navagate to [http://localhost:8080/src/main/webapp](http://localhost:8080/src/main/webapp/index.html) to view the website.
