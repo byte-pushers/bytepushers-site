@@ -1,10 +1,4 @@
-/dist/components
-/dist/index.html
-/dist/main.js
-/dist/bootstrap.min.js
-/dist/shared
-/dist/css
-/dist
+/release
 /build
 /.idea
 /bower_components

@@ -1,5 +1,3 @@
-/* todo: add projectSize html elemtents. */
-
 import Inquiry from '../../assets/js/Inquiry';
 import Address from '../../assets/js/Address'
 
