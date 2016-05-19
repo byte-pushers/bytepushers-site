@@ -12,8 +12,8 @@
   "dependencies": {
     "angular": "^1.5.3",
     "angular-ui-router": "^0.2.18",
-    "bytepushers-js-core": "~0.0.26",
-    "bytepushers-js-messaging": "~0.0.2",
+    "bytepushers-js-core": "~0.0.40",
+    "bytepushers-js-messaging": "~0.0.3",
     "bytepushers-js-restful": "~0.0.5"
   },
   "devDependencies": {

@@ -49,11 +49,11 @@ const bower = () => {
     return gulp.src(['./release/index.html']).pipe(inject(gulp.src(mainBowerFiles()))).pipe(gulp.dest('./release'));
 };
 
-const watch_build = () => {
+const watch = () => {
     gulp.watch('./src/main/webapp/**/*.*', build);
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, watch_build};
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, watch};
 
 let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector);
 

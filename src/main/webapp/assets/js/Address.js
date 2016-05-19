@@ -1,4 +1,5 @@
 import Bytepushers from 'bytepushers-js-core';
+/*if Bytepushers import fails, make sure that index.js is defined in node_modules/bytepushers-js-core*/
 
 let _toJSON = (city, country, state, street, zip) => {
   let jsonCity = '"' + city + '"',
