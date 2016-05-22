@@ -6,6 +6,8 @@ import cssmin from 'gulp-cssmin';
 import concat from 'gulp-concat';
 import inject from 'gulp-inject';
 import mainBowerFiles from 'main-bower-files';
+import kamraConst from 'karma';
+let server = kamraConst.Server;
 
 const clean = () => { return del(['./release']); };
 
@@ -53,7 +55,13 @@ const watch = () => {
     gulp.watch('./src/main/webapp/**/*.*', build);
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, watch};
+const k =  (done) => {
+  new server({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
+};
+
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, watch, k};
 
 let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector);
 
