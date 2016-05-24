@@ -35,8 +35,10 @@
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
     "karma-webpack": "^1.7.0",
     "main-bower-files": "^2.13.0",
+    "phantomjs-prebuilt": "^2.1.7",
     "webpack": "^1.13.0"
   }
 }

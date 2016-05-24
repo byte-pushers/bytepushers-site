@@ -51,19 +51,21 @@ const bower = () => {
     return gulp.src(['./release/index.html']).pipe(inject(gulp.src(mainBowerFiles()))).pipe(gulp.dest('./release'));
 };
 
-const watch = () => {
-    gulp.watch('./src/main/webapp/**/*.*', build);
-};
-
-const k =  (done) => {
+const karma =  (done) => {
   new server({
     configFile: __dirname + '/karma.conf.js'
   }, done).start();
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, watch, k};
+const karma_ci =  (done) => {
+  new server({
+    configFile: __dirname + '/karma.conf.ci.js'
+  }, done).start();
+};
 
-let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector);
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, kamra, karma_ci};
+
+let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, kamra_ci);
 
 export {build};
 export default build;

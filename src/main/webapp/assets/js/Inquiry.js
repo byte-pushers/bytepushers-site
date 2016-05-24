@@ -1,6 +1,6 @@
 import Bytepushers from 'bytepushers-js-core';
 /*if Bytepushers import fails, make sure that index.js is defined in node_modules/bytepushers-js-core*/
-import Address from './Address'
+import Address from './Address';
 
 let _toJSON = (address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) => {
   let jsonAddress= address.toJSON(),
