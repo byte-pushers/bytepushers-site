@@ -11,6 +11,8 @@ let server = karmaConst.Server;
 import protractorConst from 'gulp-protractor';
 let protractor_function = protractorConst.protractor;
 let webdriver_update = protractorConst.webdriver_update;
+import cucumberConst from 'gulp-cucumber';
+
 
 const clean = () => { return del(['./release']); };
 
@@ -76,7 +78,15 @@ const protractor = (cb) => {
   }).on('end', cb);
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, protractor};
+const cucumber = () => {
+  return gulp.src('src/test/features/*.feature').pipe(cucumberConst({
+        'steps': 'src/test/features/steps/*.js',
+        'support': 'src/test/features/support/*.js',
+        'format': 'summary'
+    }));
+}
+
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, protractor, cucumber};
 
 let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, karma_ci);
 
