@@ -41,7 +41,7 @@ class ContactController {
         if(isValid){
           this.contactService.setInquiry(this.inquiryUIObject);
           _resetFields(this.inquiryUIObject);
-          this.response = 'Message sent!'
+          this.response = 'Message sent!';
           console.log(this.contactService.getInquiry());
         }
     }

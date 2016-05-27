@@ -6,8 +6,11 @@ import cssmin from 'gulp-cssmin';
 import concat from 'gulp-concat';
 import inject from 'gulp-inject';
 import mainBowerFiles from 'main-bower-files';
-import kamraConst from 'karma';
-let server = kamraConst.Server;
+import karmaConst from 'karma';
+let server = karmaConst.Server;
+import protractorConst from 'gulp-protractor';
+let protractor_function = protractorConst.protractor;
+let webdriver_update = protractorConst.webdriver_update;
 
 const clean = () => { return del(['./release']); };
 
@@ -52,20 +55,30 @@ const bower = () => {
 };
 
 const karma =  (done) => {
-  new server({
+  new karmaConst.Server({
     configFile: __dirname + '/karma.conf.js'
   }, done).start();
 };
 
 const karma_ci =  (done) => {
-  new server({
+  new karmaConst.Server({
     configFile: __dirname + '/karma.conf.ci.js'
   }, done).start();
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, kamra, karma_ci};
+const protractor = (cb) => {
+  webdriver_update;
 
-let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, kamra_ci);
+  gulp.src(['src/test/protractor/*.js']).pipe(protractor_function({
+      configFile: 'protractor.conf.js',
+  })).on('error', function(e) {
+      console.log(e)
+  }).on('end', cb);
+};
+
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, protractor};
+
+let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, karma_ci);
 
 export {build};
 export default build;
