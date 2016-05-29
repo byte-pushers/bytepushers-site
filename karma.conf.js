@@ -5,7 +5,6 @@ module.exports = function(config) {
     browsers: ['Chrome'],
     frameworks: ['jasmine'],
     files: [
-      'release/app.bundle.js',
       'src/test/spec/*Spec.js'
     ],
     preprocessors: {

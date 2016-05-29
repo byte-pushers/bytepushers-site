@@ -11,8 +11,6 @@ let server = karmaConst.Server;
 import protractorConst from 'gulp-protractor';
 let protractor_function = protractorConst.protractor;
 let webdriver_update = protractorConst.webdriver_update;
-import cucumberConst from 'gulp-cucumber';
-
 
 const clean = () => { return del(['./release']); };
 
@@ -68,27 +66,31 @@ const karma_ci =  (done) => {
   }, done).start();
 };
 
+const cucumber = (done) => {
+  new karmaConst.Server({
+    configFile: __dirname + '/karma.cucumber.conf.js'
+  }, done).start();
+}
+
+const cucumber_ci = (done) => {
+  new karmaConst.Server({
+    configFile: __dirname + '/karma.cucumber.conf.ci.js'
+  }, done).start();
+}
+
+/*NEED TO START http-sever in project directory for it to run*/
 const protractor = (cb) => {
   webdriver_update;
-
   gulp.src(['src/test/protractor/*.js']).pipe(protractor_function({
       configFile: 'protractor.conf.js',
   })).on('error', function(e) {
-      console.log(e)
+      console.log('You may need to start an http-sever in the project directory!\n Otherwise Error: '+ e)
   }).on('end', cb);
 };
 
-const cucumber = () => {
-  return gulp.src('src/test/features/*.feature').pipe(cucumberConst({
-        'steps': 'src/test/features/steps/*.js',
-        'support': 'src/test/features/support/*.js',
-        'format': 'summary'
-    }));
-}
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, cucumber, cucumber_ci, protractor};
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, protractor, cucumber};
-
-let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, karma_ci);
+let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, karma_ci, cucumber_ci);
 
 export {build};
 export default build;

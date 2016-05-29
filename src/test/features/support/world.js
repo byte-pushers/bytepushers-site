@@ -1,12 +1,10 @@
-var zombie = require('zombie');
-function World() {
-  this.browser = new zombie(); // this.browser will be available in step definitions
+/*import zombie from 'zombie';*/
 
-  this.visit = function (url, callback) {
-    this.browser.visit(url, callback);
-  };
+export default class World {
+  constructor () {
+    this.browser = 'browser';
+  }
+  visit (url, callback) {
+    return 'visited: ' + url;
+  }
 }
-
-module.exports = function() {
-  this.World = World;
-};
