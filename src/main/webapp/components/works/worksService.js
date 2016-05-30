@@ -2,18 +2,18 @@ import Work from '../../assets/js/Work';
 
 export default class WorksService {
     constructor() {
-      this.worksArray = [];
+      this.worksPortfolio = [];
     }
 
-    get works() {
-      return this.worksArray;
+    get portfolio() {
+      return this.worksPortfolio;
     }
 
-    set works(newWorksArray) {
-      this.worksArray = newWorksArray;
+    set portfolio(newWorksPortfolio) {
+      this.worksPortfolio = newWorksPortfolio;
     }
 
-    addWork(work) {
-      this.worksArray.push(work);
+    addWorkToPortfolio(work) {
+      this.worksPortfolio.push(work);
     }
 }

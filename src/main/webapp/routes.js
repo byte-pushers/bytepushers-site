@@ -16,8 +16,20 @@ const Routes = ($urlRouterProvider, $stateProvider) => {
       })
       .state('works',{
           url: '/works',
-          templateUrl: './components/works/worksView.html',
-          controller:'WorksController',
+          templateUrl: './components/works/worksView.html'
+      })
+      .state('works.portfolio',{
+          parent:'works',
+          url: '/portfolio',
+          templateUrl: './components/works/portfolio/worksPortfolioView.html',
+          controller:'WorksPortfolioController',
+          controllerAs: 'ctrl'
+      })
+      .state('works.new',{
+          parent:'works',
+          url: '/new',
+          templateUrl: './components/works/new/worksNewView.html',
+          controller:'WorksNewController',
           controllerAs: 'ctrl'
       })
       .state('about',{

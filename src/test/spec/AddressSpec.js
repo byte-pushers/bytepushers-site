@@ -1,4 +1,3 @@
-console.log('test');
 import Address from './../../main/webapp/assets/js/Address';
 
 describe('Address', () => {

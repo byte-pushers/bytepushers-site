@@ -1,9 +1,9 @@
 Feature: Address feature
         In order to test Address
-        As a client
+        As a developer
         I will sample Address
 
         Scenario: create & init address
                 Given a sample address
-                When I generate generate a toJSON
-                Then the results should not be null
+                When I generate generate an address toJSON
+                Then the results should equal given address JSON string

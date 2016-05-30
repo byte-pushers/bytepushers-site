@@ -78,7 +78,7 @@ const cucumber_ci = (done) => {
   }, done).start();
 }
 
-/*NEED TO START http-sever in project directory for it to run*/
+/*NEED TO START http-sever in project_dir/release for it to run*/
 const protractor = (cb) => {
   webdriver_update;
   gulp.src(['src/test/protractor/*.js']).pipe(protractor_function({
@@ -88,9 +88,14 @@ const protractor = (cb) => {
   }).on('end', cb);
 };
 
-export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, cucumber, cucumber_ci, protractor};
+const watch = () => {
+  gulp.watch('./src/main/**/*.*', build);
+}
 
-let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector, karma_ci, cucumber_ci);
+export {clean, webpack, copyBuild, uglifyCSS, injector, bower, karma, karma_ci, cucumber, cucumber_ci, protractor, watch};
+
+let tests = gulp.series(karma_ci, cucumber_ci);
+let build = gulp.series(clean, webpack, copyBuild, uglifyCSS, injector);
 
 export {build};
 export default build;

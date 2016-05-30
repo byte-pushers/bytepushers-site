@@ -3,22 +3,26 @@ import World from '../support/world';
 
 __adapter__.addStepDefinitions(scenario => {
 	let world = new World();
+	let address;
+	let json;
 
 	scenario.Given(/^a sample address$/, (callback) => {
-		let address = new Address('fayetteville', 'US', 'AR', 'Example St.', '72703');
+		address = world.getAddress();
 		callback();
 	});
 
-  scenario.When(/^I generate generate a toJSON$/, (callback) => {
-		callback(null, 'pending');
+  scenario.When(/^I generate generate an address toJSON$/, (callback) => {
+		json = address.toJSON();
+		callback();
   });
 
-	scenario.Then(/^the results should not be null$/, (callback) => {
-		var pageTitle = this.browser.text('title');
-    if ("Usage" === pageTitle) {
+	scenario.Then(/^the results should equal given address JSON string$/, (callback) => {
+    if (
+			json === '{"city": "fayetteville","country": "US","street": "AR","state": "Example St.","zip": "72703"}'
+		) {
       callback();
     } else {
-      callback(new Error("Expected to be on page with title " + title));
+      callback(new Error("Expected 'json' to be defined."));
     }
 	});
 });

@@ -1,7 +1,6 @@
 import Bytepushers from 'bytepushers-js-core';
-/*if Bytepushers import fails, make sure that index.js is defined in node_modules/bytepushers-js-core*/
 
-/*todo: finish creating work object, move to view and controler to display an array of them? then format and
+/*todo: now that test config are FINALLY FINISHED, finish creating work object, move to view and controler to display an array of them? then format and
   create form to add new work objects*/
 
   let _toJSON = (date, description, name, photo, revenue, technologies) => {
