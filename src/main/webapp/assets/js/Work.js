@@ -1,11 +1,9 @@
 import Bytepushers from 'bytepushers-js-core';
 
-/*todo: now that test config are FINALLY FINISHED, finish creating work object, move to view and controler to display an array of them? then format and
-  create form to add new work objects*/
-
-  let _toJSON = (date, description, name, photo, revenue, technologies) => {
+  let _toJSON = (date, description, link, name, photo, revenue, technologies) => {
     let jsonDate = '"' + date + '"',
         jsonDescription = '"' + description + '"',
+        jsonLink = '"' + link + '"',
         jsonName = '"' + name + '"',
         jsonPhoto = '"' + photo + '"',
         jsonRevenue = '"' + revenue + '"',
@@ -13,6 +11,7 @@ import Bytepushers from 'bytepushers-js-core';
         json = '{' +
             '"date": ' + jsonDate + ',' +
             '"description": ' + jsonDescription + ',' +
+            '"link": ' + jsonLink + ',' +
             '"name": ' + jsonName + ',' +
             '"photo": ' + jsonPhoto + ',' +
             '"revenue": ' + jsonRevenue + ',' +
@@ -22,9 +21,10 @@ import Bytepushers from 'bytepushers-js-core';
   }
 
 export default class Work {
-    constructor(date, description, name, photo, revenue, technologies) {
+    constructor(date, description, link, name, photo, revenue, technologies) {
       this.date = (Object.isDefined(date) && Object.isDate(date)) ? date : null;
       this.description = (Object.isDefined(description) && Object.isString(description)) ? description : null;
+      this.link = (Object.isDefined(link) && Object.isString(link)) ? link : null;
       this.name = (Object.isDefined(name) && Object.isString(name)) ? name : null;
       this.photo = (Object.isDefined(photo)) ? photo : null;
       this.revenue = (Object.isDefined(revenue) && Object.isString(revenue)) ? revenue : null;
@@ -32,10 +32,10 @@ export default class Work {
     }
 
     toJSON() {
-      return _toJSON(this.date, this.description, this.name, this.photo, this.revenue, this.technologies);
+      return _toJSON(this.date, this.description, this.link, this.name, this.photo, this.revenue, this.technologies);
     }
 
     toUIObject() {
-      return JSON.parse(_toJSON(this.date, this.description, this.name, this.photo, this.revenue, this.technologies));
+      return JSON.parse(_toJSON(this.date, this.description, this.link, this.name, this.photo, this.revenue, this.technologies));
     }
 }

@@ -13,7 +13,7 @@ export default class WorksService {
       this.worksPortfolio = newWorksPortfolio;
     }
 
-    addWorkToPortfolio(work) {
-      this.worksPortfolio.push(work);
+    addWorkToPortfolio(config) {
+      this.worksPortfolio.push(new Work(config.date, config.description, config.link, config.name, config.photo, config.revenue, config.technologies));
     }
 }

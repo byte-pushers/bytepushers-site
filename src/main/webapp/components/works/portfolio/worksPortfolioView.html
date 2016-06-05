@@ -2,25 +2,49 @@
     <div class="col-md-12" background-image="{{ctrl.img}}">
     </div>
 </div>
+
 <div class="row portfolio-buffer">
-    <div class="col-md-12">
-      <div class="card-columns">
-        <div class="card" ng-repeat="x in ctrl.portfolio">
-          <img class="card-img" ng-src="{{x.photo}}" alt="Card image">
-          <div class="card-img-overlay card-inverse">
-            <h4 class="card-title">{{x.name}}</h4>
-            <p class="card-text">{{x.desc}}</p>
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-columns">
+
+          <div class="card" ng-repeat="x in ctrl.portfolio" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <img class="card-img img-fluid" ng-src="{{x.photo}}" alt="Work Image">
+            <div class="card-img-overlay card-inverse">
+              <h4 class="card-title text-xs-center">{{x.name}}</h4>
+              <p class="card-text">{{x.desc}}</p>
+            </div>
           </div>
-          <div class="card-footer text-muted">
-            {{x.date}}
-          </div>
+
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5">
+        <button class="btn btn-primary-outline" ui-sref="works.new" type="submit">New</button>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+
+  </div>
+  <div class="col-md-1"></div>
 </div>
 
 <div class="row">
-  <div class="col-md-12 text-right">
-    <button class="btn btn-lg btn-default" ui-sref="works.new" type="submit">Submit</button>
+  <div class="col-md-12">
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Large modal</button>
+
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          ...
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -2,6 +2,7 @@
     box-shadow: 0 0 0em white;
 }
 
-.row.padding {
-    padding-top: 2em;
+.row.buffer {
+  padding-top: 2em;
+  padding-bottom: 2em;
 }

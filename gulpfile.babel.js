@@ -44,7 +44,8 @@ const uglifyCSS = () => {
 
 const injector = () => {
     let target = gulp.src('./release/index.html');
-    let sources =  gulp.src(['./release/libs/bootstrap/bootstrap.min.css','./release/css/main.min.css','./release/app.bundle.js'], {read: false});
+    /*let sources =  gulp.src(['./release/libs/bootstrap/bootstrap.min.css','./release/css/main.min.css','./release/libs/jquery/jquery.min.js','./release/app.bundle.js'], {read: false});*/
+let sources =  gulp.src(['./release/css/main.min.css','./release/app.bundle.js'], {read: false});
     return target
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./release'));
@@ -78,7 +79,7 @@ const cucumber_ci = (done) => {
   }, done).start();
 }
 
-/*NEED TO START http-sever in project_dir/release for it to run*/
+/*NEED to start http-sever in project_dir for it to run*/
 const protractor = (cb) => {
   webdriver_update;
   gulp.src(['src/test/protractor/*.js']).pipe(protractor_function({

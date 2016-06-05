@@ -1,7 +1,7 @@
 import angular from 'angular';
-import BackgroundImageDirective from './view/backgroundImageDirective'
-import ScrollNavbarDirective from './navigation/scrollNavbarDirective'
-import ScrollTopDirective from './navigation/scrollTopDirective'
+import BackgroundImageDirective from './page/backgroundImageDirective';
+import ScrollNavbarDirective from './navigation/scrollNavbarDirective';
+import ScrollTopDirective from './navigation/scrollTopDirective';
 
 export default angular.module('app.directives', [])
     .directive('backgroundImage', () => new BackgroundImageDirective)

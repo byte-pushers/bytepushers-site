@@ -3,7 +3,7 @@
     </div>
 </div>
 
-<div class="row padding">
+<div class="row buffer">
     <div class="col-md-8 col-md-offset-2">
         <form name="contactForm">
             <div class="row">
@@ -102,10 +102,15 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group text-right">
-                <button class="btn btn-lg btn-default" data-ng-click="ctrl.click(contactForm.$valid)" type="submit">Submit</button>
+            <div class="row">
+              <div class="col-md-2 col-md-offset-5"
+                <div class="form-group">
+                    <button class="btn btn-primary-outline" data-ng-click="ctrl.click(contactForm.$valid)" type="submit">Submit</button>
+                </div>
+              </div>
+              <div class="col-md-5"></div>
             </div>
-            <div class="form-group text-center">
+            <div class="form-group">
                 <label data-ng-bind="ctrl.response"></label>
             </div>
         </form>

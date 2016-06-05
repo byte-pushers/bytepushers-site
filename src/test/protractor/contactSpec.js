@@ -8,8 +8,8 @@ describe('contact form', function() {
     element(by.model('ctrl.inquiryUIObject.phoneNumber')).sendKeys('9403687410');
     element(by.model('ctrl.inquiryUIObject.description')).sendKeys('Sample message.');
 
-    element(by.css('.btn.btn-lg.btn-default')).click();
-    
+    element(by.css('.btn.btn-primary-outline')).click();
+
     expect(element(by.binding('ctrl.response')).getText()).toEqual('Message sent!');
   });
 });
