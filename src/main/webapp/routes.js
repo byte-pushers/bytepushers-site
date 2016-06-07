@@ -16,7 +16,7 @@ const Routes = ($urlRouterProvider, $stateProvider) => {
       })
       .state('works',{
           url: '/works',
-          templateUrl: './components/works/worksView.html'
+          template: '<ui-view></ui-view>'
       })
       .state('works.portfolio',{
           parent:'works',

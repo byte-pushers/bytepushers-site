@@ -44,8 +44,8 @@ const uglifyCSS = () => {
 
 const injector = () => {
     let target = gulp.src('./release/index.html');
-    /*let sources =  gulp.src(['./release/libs/bootstrap/bootstrap.min.css','./release/css/main.min.css','./release/libs/jquery/jquery.min.js','./release/app.bundle.js'], {read: false});*/
-let sources =  gulp.src(['./release/css/main.min.css','./release/app.bundle.js'], {read: false});
+    let sources =  gulp.src(['./release/libs/bootstrap/bootstrap.min.css','./release/css/main.min.css','./release/app.bundle.js'], {read: false});
+    /*let sources =  gulp.src(['./release/css/main.min.css','./release/app.bundle.js'], {read: false});*/
     return target
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./release'));
