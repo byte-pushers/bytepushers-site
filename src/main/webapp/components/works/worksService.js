@@ -14,6 +14,6 @@ export default class WorksService {
     }
 
     addWorkToPortfolio(config) {
-      this.worksPortfolio.push(new Work(config.date, config.description, config.link, config.name, config.photo, config.revenue, config.technologies));
+      this.worksPortfolio.push(new Work(config.id, config.date, config.description, config.link, config.name, config.photo, config.revenue, config.technologies));
     }
 }

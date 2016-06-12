@@ -8,6 +8,7 @@ __adapter__.addStepDefinitions(scenario => {
 
 	scenario.Given(/^a sample address$/, (callback) => {
 		address = world.getAddress();
+
 		callback();
 	});
 
@@ -18,7 +19,7 @@ __adapter__.addStepDefinitions(scenario => {
 
 	scenario.Then(/^the results should equal given address JSON string$/, (callback) => {
     if (
-			json === '{"city": "fayetteville","country": "US","street": "AR","state": "Example St.","zip": "72703"}'
+			json === '{"id": "1","city": "fayetteville","country": "US","street": "AR","state": "Example St.","zip": "72703"}'
 		) {
       callback();
     } else {

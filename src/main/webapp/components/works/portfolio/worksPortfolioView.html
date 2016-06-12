@@ -7,6 +7,12 @@
   <div class="col-xs-10 col-xs-offset-1">
 
     <div class="row">
+      <div class="col-xs-12 text-xs-center">
+        <label>Click on any of the works to view more information!</label>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-xs-12">
         <div class="card-columns">
           <div class="card" ng-repeat="work in ctrl.portfolio" >
@@ -14,19 +20,35 @@
             <img class="card-img img-fluid" ng-src="{{work.photo}}" alt="Work Image">
             <div class="card-img-overlay card-inverse" data-toggle="modal" data-target="#workModal{{$index}}">
               <h4 class="card-title text-xs-center">{{work.name}}</h4>
-              <p class="card-text">{{work.desc}}</p>
             </div>
 
             <div id="workModal{{$index}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="workModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="workModalLabel">{{work.name}}</h4>
+                    <h4 class="modal-title text-xs-center" id="workModalLabel">{{work.name}}</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="container-fluid">
-                      
+                    <div class="container-fluid text-xs-center">
+                      <div class="row">
+                        <div class="col-xs-12"><label>Description:</label> {{work.description}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12"><label>Link:</label> <a href="{{work.link}}">{{work.link}}</a></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6"><label>Created:</label> {{work.date.getMonth() + 1}}/{{work.date.getDate()}}/{{work.date.getFullYear()}}</div>
+                        <div class="col-xs-6"><label>Revenue:</label> {{work.revenue}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">{{work.photo}}</div>
+                        <div class="col-xs-6">
+                          <label>Technologies:</label>
+                          <div ng-repeat="technology in work.technologies">
+                            {{technology}}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="modal-footer">

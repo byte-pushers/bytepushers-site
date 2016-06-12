@@ -7,8 +7,8 @@ export default class ContactService {
     }
 
     setInquiry(inquiryConfig) {
-        let address = new Address(inquiryConfig.address.city, inquiryConfig.address.country, inquiryConfig.address.state, inquiryConfig.address.street, inquiryConfig.address.zip)
-        this.inquiry = new Inquiry(address, inquiryConfig.company, inquiryConfig.description, inquiryConfig.email, inquiryConfig.funded, inquiryConfig.nameFirst, inquiryConfig.nameLast, inquiryConfig.phoneNumber, inquiryConfig.projectSize, inquiryConfig.projectType);
+        let address = new Address(inquiryConfig.address.id, inquiryConfig.address.city, inquiryConfig.address.country, inquiryConfig.address.state, inquiryConfig.address.street, inquiryConfig.address.zip)
+        this.inquiry = new Inquiry(inquiryConfig.id, address, inquiryConfig.company, inquiryConfig.description, inquiryConfig.email, inquiryConfig.funded, inquiryConfig.nameFirst, inquiryConfig.nameLast, inquiryConfig.phoneNumber, inquiryConfig.projectSize, inquiryConfig.projectType);
     }
 
     getInquiry() {

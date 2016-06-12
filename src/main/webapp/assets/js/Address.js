@@ -1,13 +1,14 @@
 import Bytepushers from 'bytepushers-js-core';
-/*if Bytepushers import fails, make sure that index.js is defined in node_modules/bytepushers-js-core*/
 
-let _toJSON = (city, country, state, street, zip) => {
-  let jsonCity = '"' + city + '"',
+let _toJSON = (id, city, country, state, street, zip) => {
+  let jsonId = '"' + id + '"',
+      jsonCity = '"' + city + '"',
       jsonCountry = '"' + country + '"',
       jsonState = '"' + state + '"',
       jsonStreet= '"' + street + '"',
       jsonZip = '"' + zip + '"',
       json = '{' +
+          '"id": ' + jsonId + ',' +
           '"city": ' + jsonCity + ',' +
           '"country": ' + jsonCountry + ',' +
           '"street": ' + jsonState + ',' +
@@ -18,7 +19,8 @@ let _toJSON = (city, country, state, street, zip) => {
 }
 
 export default class Address {
-    constructor(city, country, state, street, zip) {
+    constructor(id, city, country, state, street, zip) {
+      this.id = (Object.isDefined(id)) ? id : null;
       this.city = (Object.isDefined(city) && Object.isString(city)) ? city : null;
       this.country = (Object.isDefined(country) && Object.isString(country)) ? country : null;
       this.state = (Object.isDefined(state) && Object.isString(state)) ? state : null;
@@ -27,10 +29,10 @@ export default class Address {
     }
 
     toJSON() {
-      return _toJSON(this.city, this.country, this.state, this.street, this.zip);
+      return _toJSON(this.id, this.city, this.country, this.state, this.street, this.zip);
     }
 
     toUIObject() {
-      return JSON.parse(_toJSON(this.city, this.country, this.state, this.street, this.zip));
+      return JSON.parse(_toJSON(this.id, this.city, this.country, this.state, this.street, this.zip));
     }
 }

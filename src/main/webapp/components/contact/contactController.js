@@ -10,6 +10,8 @@ let _getCountries = () => {
 }
 
 let _resetFields = (inquiry) => {
+    inquiry.id = null;
+    inquiry.address.id = null;
     inquiry.address.city = '';
     inquiry.address.country = '';
     inquiry.address.street = '';
@@ -39,6 +41,8 @@ class ContactController {
 
     click(isValid) {
         if(isValid){
+          this.inquiryUIObject.id = 1;
+          this.inquiryUIObject.address.id = 1;
           this.contactService.setInquiry(this.inquiryUIObject);
           _resetFields(this.inquiryUIObject);
           this.response = 'Message sent!';

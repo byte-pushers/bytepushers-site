@@ -1,9 +1,9 @@
 import Bytepushers from 'bytepushers-js-core';
-/*if Bytepushers import fails, make sure that index.js is defined in node_modules/bytepushers-js-core*/
 import Address from './Address';
 
-let _toJSON = (address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) => {
-  let jsonAddress= address.toJSON(),
+let _toJSON = (id, address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) => {
+  let jsonId = '"' + id + '"',
+      jsonAddress= address.toJSON(),
       jsonCompany = '"' + company + '"',
       jsonDescription = '"' + description + '"',
       jsonEmail = '"' + email + '"',
@@ -14,6 +14,7 @@ let _toJSON = (address, company, description, email, funded, nameFirst, nameLast
       jsonProjectSize= '"' + projectSize + '"',
       jsonProjectType = '"' + projectType + '"',
       json = '{' +
+          '"id": ' + jsonId + ',' +
           '"address": ' + jsonAddress + ',' +
           '"description": ' + jsonDescription + ',' +
           '"company": ' + jsonCompany + ',' +
@@ -29,7 +30,8 @@ let _toJSON = (address, company, description, email, funded, nameFirst, nameLast
 }
 
 export default class Inquiry {
-    constructor(address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
+    constructor(id, address, company, description, email, funded, nameFirst, nameLast, phoneNumber, projectSize, projectType) {
+      this.id = (Object.isDefined(id)) ? id : null;
       this.address = (Object.isDefined(address)) ? address : new Address();
       this.company = (Object.isDefined(company && Object.isString(company))) ? company : null;
       this.description = (Object.isDefined(description) && Object.isString(description)) ? description : null;
@@ -44,10 +46,10 @@ export default class Inquiry {
     }
 
     toJSON() {
-      return _toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType);
+      return _toJSON(this.id, this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType);
     }
 
     toUIObject() {
-      return JSON.parse(_toJSON(this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType));
+      return JSON.parse(_toJSON(this.id, this.address, this.company, this.description, this.email, this.funded, this.nameFirst, this.nameLast, this.phoneNumber, this.projectSize, this.projectType));
     }
 }

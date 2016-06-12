@@ -1,6 +1,7 @@
 import Work from '../../../assets/js/Work.js'
 
 let _resetFields = (work) => {
+    work.id = null;
     work.date = new Date();
     work.description = '';
     work.link = '';
@@ -26,12 +27,14 @@ class NewWorksController {
     click(isValid) {
         if(isValid){
           /*todo: ask tonte about best practice, and file uploading in general*/
+          this.workUIObject.id = 1;
           this.workUIObject.photo = document.querySelector('input[type=file]').files[0];
           this.workUIObject.technologies = this.workUIObject.technologies.split(',');
 
           this.worksService.addWorkToPortfolio(this.workUIObject);
-          this.response = 'Message sent!';
           _resetFields(this.workUIObject);
+          this.response = 'Message sent!';
+          console.log(this.worksService.portfolio);
         }
     }
 }

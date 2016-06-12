@@ -17,12 +17,12 @@ __adapter__.addStepDefinitions(scenario => {
   });
 
 	scenario.Then(/^it should equal the given JSON string$/, (callback) => {
-    if (
-			json === '{"city": "fayetteville","country": "US","street": "AR","state": "Example St.","zip": "72703"}'
+		if (
+			json === '{"id": "1","date": "Fri Mar 07 2014 00:00:00 GMT-0600 (CST)","description": "desc.","link": "https://github.com/example/project","name": "project 1","photo": "http://holder.ninja/400x300.svg","revenue": "9000","technologies": [angular,bootsrap,es6]}'
 		) {
       callback();
     } else {
-      callback(new Error("Expected 'json' to be defined."));
+      callback(new Error("Expected 'json' to be equal given string."));
     }
 	});
 });
