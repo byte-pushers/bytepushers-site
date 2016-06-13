@@ -5,7 +5,11 @@ module.exports = function (Schema) {
     address: new Schema({
       properties: {
         id: { type: 'string' },
-        name: { type: 'string' }
+        city: { type: 'string' },
+        country: { type: 'string' },
+        state: { type: 'string' },
+        street: { type: 'string' },
+        zip: { type: 'string' }
       }
     }),
 
@@ -13,20 +17,29 @@ module.exports = function (Schema) {
       properties: {
         id: { type: 'string' },
         // Only the DataStore component cares about the "indexed" attribute
-        user_id: { type: 'string', indexed: true },
-        title: { type: 'string' },
-        content: { type: 'string' }
+        address_id: { type: 'string', indexed: true },
+        company: { type: 'string' },
+        description: { type: 'string' },
+        email: { type: 'string' },
+        funded: { type: 'boolean' },
+        nameFirst: { type: 'string' },
+        nameLast: { type: 'string' },
+        phoneNumber: { type: 'string' },
+        projectSize: { type: 'string' },
+        projectType: { type: 'string' }
       }
     }),
 
     work: new Schema({
-      properties: {
+      properties: { id, date, description, link, name, photo, revenue, technologies
         id: { type: 'string' },
-        // Only the DataStore component cares about the "indexed" attribute
-        post_id: { type: 'string', indexed: true },
-        // Only the DataStore component cares about the "indexed" attribute
-        user_id: { type: 'string', indexed: true },
-        content: { type: 'string' }
+        date: { type: 'date' },
+        description: { type: 'string' },
+        link: { type: 'string' },
+        name: { type: 'string' },
+        photo: { type: 'string' },
+        revenue: { type: 'string' },
+        technologies: { type: 'array' }
       }
     })
   }

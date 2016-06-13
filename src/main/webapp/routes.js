@@ -1,4 +1,4 @@
-const Routes = ($urlRouterProvider, $stateProvider) => {
+export default ($urlRouterProvider, $stateProvider) => {
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
@@ -45,7 +45,3 @@ const Routes = ($urlRouterProvider, $stateProvider) => {
           controllerAs: 'ctrl'
       });
 }
-
-Routes.$inject = ['$urlRouterProvider', '$stateProvider'];
-
-export default Routes;

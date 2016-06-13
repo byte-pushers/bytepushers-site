@@ -6,117 +6,123 @@
 <div class="row buffer">
     <div class="col-xs-8 col-xs-offset-2">
         <form name="contactForm">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>First Name <span class="text-primary">*</span></label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.nameFirst" placeholder="Your First Name" required>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>Last Name <span class="text-primary">*</span></label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.nameLast" placeholder="Your Last Name" required>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Email address <span class="text-primary">*</span></label>
-                <input type="email" class="form-control" data-ng-model="ctrl.inquiryUIObject.email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <label>Phone Number <span class="text-primary">*</span></label>
-                <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.phoneNumber" placeholder="Phone Number" maxlength="10" required>
-            </div>
-            <div class="form-group" >
-                <label>Description <span class="text-primary">*</span></label>
-                <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.description" placeholder="Description" required>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>Company</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.company" placeholder="Company">
-                    </div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="form-group">
-                        <label>Funded</label>
-                        <input type="checkbox" class="form-control checkbox" data-ng-model="ctrl.inquiryUIObject.funded">
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label>Project Type</label> <br>
-                        <label class="radio-inline"><input type="radio" value="personal" data-ng-model="ctrl.inquiryUIObject.projectType">Personal</label>
-                        <label class="radio-inline"><input type="radio" value="company" data-ng-model="ctrl.inquiryUIObject.projectType">Company</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="form-group">
-                        <label>Street</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.street" placeholder="Street" >
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.city" placeholder="City" >
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label>Zip</label>
-                        <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.zip" placeholder="Zip" >
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label>State</label> <br>
-                        <select data-ng-model="ctrl.inquiryUIObject.address.state" ng-options="s as s for s in ctrl.states" placeholder="Select state"></select>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label>Country</label> <br>
-                        <select data-ng-model="ctrl.inquiryUIObject.address.country" ng-options="s as s for s in ctrl.countries"placeholder="Select country"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="form-group" >
-                        <label>Project Size</label> <br>
-                        <label class="radio-inline"><input type="radio" value="small" data-ng-model="ctrl.inquiryUIObject.projectSize">Small ($0-$5,000)</label>
-                        <label class="radio-inline"><input type="radio" value="medium" data-ng-model="ctrl.inquiryUIObject.projectSize">Medium ($5,000-$15,000)</label>
-                        <label class="radio-inline"><input type="radio" value="large" data-ng-model="ctrl.inquiryUIObject.projectSize">Large (<$15,000)</label>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group" >
-                        <br> <label><span class="text-primary">*</span> denotes a required field.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-2 col-xs-offset-5"
-                <div class="form-group">
-                    <button class="btn btn-primary-outline" data-ng-click="ctrl.click(contactForm.$valid)" type="submit">Submit</button>
-                </div>
+          <div class="row">
+              <div class="col-xs-6">
+                  <div class="form-group">
+                      <label>First Name <span class="text-primary">*</span></label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.nameFirst" placeholder="Your First Name" required>
+                  </div>
               </div>
-              <div class="col-xs-5"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 text-xs-center"
-                <div class="form-group">
-                    <label data-ng-bind="ctrl.response"></label>
-                </div>
+              <div class="col-xs-6">
+                  <div class="form-group">
+                      <label>Last Name <span class="text-primary">*</span></label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.nameLast" placeholder="Your Last Name" required>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                  <label>Email address <span class="text-primary">*</span></label>
+                  <input type="email" class="form-control" data-ng-model="ctrl.inquiryUIObject.email" placeholder="Email" required>
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                  <label>Phone Number <span class="text-primary">*</span></label>
+                  <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.phoneNumber" placeholder="Phone Number" maxlength="10" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group" >
+                  <label>Description <span class="text-primary">*</span></label>
+                  <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.description" placeholder="Description" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-6">
+                  <div class="form-group">
+                      <label>Company</label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.company" placeholder="Company">
+                  </div>
+              </div>
+              <div class="col-xs-2">
+                  <div class="form-group">
+                      <label>Funded</label>
+                      <input type="checkbox" class="form-control checkbox" data-ng-model="ctrl.inquiryUIObject.funded">
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="form-group">
+                      <label>Project Type</label> <br>
+                      <label class="radio-inline"><input type="radio" value="personal" data-ng-model="ctrl.inquiryUIObject.projectType">Personal</label>
+                      <label class="radio-inline"><input type="radio" value="company" data-ng-model="ctrl.inquiryUIObject.projectType">Company</label>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-8">
+                  <div class="form-group">
+                      <label>Street</label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.street" placeholder="Street" >
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="form-group">
+                      <label>City</label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.city" placeholder="City" >
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-4">
+                  <div class="form-group">
+                      <label>Zip</label>
+                      <input type="text" class="form-control" data-ng-model="ctrl.inquiryUIObject.address.zip" placeholder="Zip" >
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="form-group">
+                      <label>State</label> <br>
+                      <select data-ng-model="ctrl.inquiryUIObject.address.state" ng-options="s as s for s in ctrl.states" placeholder="Select state"></select>
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="form-group">
+                      <label>Country</label> <br>
+                      <select data-ng-model="ctrl.inquiryUIObject.address.country" ng-options="s as s for s in ctrl.countries"placeholder="Select country"></select>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-8">
+                  <div class="form-group" >
+                      <label>Project Size</label> <br>
+                      <label class="radio-inline"><input type="radio" value="small" data-ng-model="ctrl.inquiryUIObject.projectSize">Small ($0-$5,000)</label>
+                      <label class="radio-inline"><input type="radio" value="medium" data-ng-model="ctrl.inquiryUIObject.projectSize">Medium ($5,000-$15,000)</label>
+                      <label class="radio-inline"><input type="radio" value="large" data-ng-model="ctrl.inquiryUIObject.projectSize">Large (<$15,000)</label>
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="form-group" >
+                      <br> <label><span class="text-primary">*</span> denotes a required field.</label>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-5"
+              <div class="form-group">
+                  <button class="btn btn-primary-outline" data-ng-click="ctrl.click(contactForm.$valid)" type="submit">Submit</button>
+                  <label data-ng-bind="ctrl.response"/>
+              </div>
+            </div>
+            <div class="col-xs-5"></div>
+          </div>
         </form>
     </div>
     <div class="col-xs-2"></div>

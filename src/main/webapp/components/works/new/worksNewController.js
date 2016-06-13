@@ -1,5 +1,7 @@
 import Work from '../../../assets/js/Work.js'
 
+  /*successfully inject into js-data, next will move to getting the display from worksPorfolio*/
+
 let _resetFields = (work) => {
     work.id = null;
     work.date = new Date();
@@ -12,12 +14,15 @@ let _resetFields = (work) => {
 }
 
 class NewWorksController {
-    constructor(WorksService) {
-        this.img = 'https://c6.staticflickr.com/4/3594/3464353533_d5cf23f0fd_b.jpg';
-        this.worksService = WorksService;
-        this.portfolio = WorksService.portfolio;
-        this.workUIObject = new Work().toUIObject();
-        _resetFields(this.workUIObject);
+    constructor(WorksService, DS) {
+      this.worksService = WorksService;
+      this.DS = DS;
+
+      this.img = 'https://c6.staticflickr.com/4/3594/3464353533_d5cf23f0fd_b.jpg';
+      this.portfolio = WorksService.portfolio;
+      this.workUIObject = new Work().toUIObject();
+
+      _resetFields(this.workUIObject);
     }
 
     onChange(element) {
@@ -32,13 +37,13 @@ class NewWorksController {
           this.workUIObject.technologies = this.workUIObject.technologies.split(',');
 
           this.worksService.addWorkToPortfolio(this.workUIObject);
+          this.DS.inject('work', this.workUIObject);
           _resetFields(this.workUIObject);
           this.response = 'Message sent!';
           console.log(this.worksService.portfolio);
+          console.log(this.DS.get('work', 1));
         }
     }
 }
-
-NewWorksController.$inject = ['WorksService'];
 
 export default NewWorksController;

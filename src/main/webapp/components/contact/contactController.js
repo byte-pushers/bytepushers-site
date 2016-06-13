@@ -51,6 +51,4 @@ class ContactController {
     }
 }
 
-ContactController.$inject = ['ConctactService']
-
 export default ContactController;
